@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=3.6.14
+Type=Application
+Name=Vassal
+Comment=Vassal is a game engine for building and playing online adaptations of board games and card games.
+Exec=vassal
+Icon=org.vassalengine.vassal
+MimeType=
+Categories=Game

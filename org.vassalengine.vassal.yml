@@ -1,0 +1,38 @@
+app-id: org.vassalengine.vassal
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.openjdk
+command: vassal
+finish-args:
+  - --share=ipc
+  - --socket=x11
+  - --socket=wayland
+  - --share=network
+  - --env=PATH=/app/bin:/app/jdk/bin
+  - --env=JAVA_HOME=/app/jdk
+  - --filesystem=home
+modules:
+  - name: openjdk
+    buildsystem: simple
+    build-commands:
+      - /usr/lib/sdk/openjdk/installjdk.sh
+  - name: vassal
+    buildsystem: simple
+    sources:
+      - type: file
+        path: vassal
+        dest-filename: vassal
+      - type: file
+        path: org.vassalengine.vassal.desktop
+        dest-filename: org.vassalengine.vassal.desktop
+      - type: archive
+        sha256: "3f4787b6411f3319c38dcb7c227941efeebbd0a844bbdf9cc64b3e7b6e9b45e4"
+        url: "https://github.com/vassalengine/vassal/releases/download/3.6.14/VASSAL-3.6.14-linux.tar.bz2"
+    build-commands:
+      - install -D vassal /app/bin/vassal
+      - mkdir -p /app/lib
+      - install -D lib/*.jar /app/lib
+      - install -Dm644 org.vassalengine.vassal.desktop /app/share/applications/org.vassalengine.vassal.desktop
+      - install -Dm644 VASSAL.svg /app/share/icons/hicolor/scalable/apps/org.vassalengine.vassal.svg
