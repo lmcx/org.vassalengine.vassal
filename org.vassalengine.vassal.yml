@@ -6,10 +6,11 @@ sdk-extensions:
   - org.freedesktop.Sdk.Extension.openjdk17
 command: vassal
 finish-args:
+  - --share=network
   - --share=ipc
   - --socket=x11
   - --socket=wayland
-  - --share=network
+  - --socket=pulseaudio
   - --env=PATH=/app/bin:/app/jdk/bin
   - --env=JAVA_HOME=/app/jdk
   - --filesystem=home
