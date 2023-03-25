@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>org.vassalengine.vassal</id>
+  
+  <name>Vassal</name>
+  <summary>Vassal is a game engine for building and playing online adaptations of board games and card games.</summary>
+  
+  <metadata_license>MIT</metadata_license>
+  <project_license>LGPL-2.1-or-later</project_license>
+  
+  <description>
+    <p>
+      Vassal is a game engine for building and playing online adaptations of board games and card games. You can use Vassal to play in real time over the Internet or by email. Vassal runs on all platforms and is free, open-source software.
+    </p>
+  </description>
+  
+  <launchable type="desktop-id">org.vassalengine.vassal.desktop</launchable>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://vassalengine.org/images/screenshots/screenshot6-864.jpg</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vassalengine.org/images/screenshots/screenshot5-864.jpg</image>
+    </screenshot>
+    <screenshot>
+      <image>https://vassalengine.org/images/screenshots/screenshot3-864.jpg</image>
+    </screenshot>
+  </screenshots>
+</component>
