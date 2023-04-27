@@ -32,7 +32,7 @@ modules:
         path: org.vassalengine.vassal.metainfo.xml
         dest-filename: org.vassalengine.vassal.metainfo.xml
       - type: git
-        tag: "3.6.14"
+        tag: "3.6.17"
         url: "https://github.com/vassalengine/vassal.git"
       - type: patch
         path: patches/skip_doc.patch
@@ -46,8 +46,8 @@ modules:
       - make release-linux
       - install -D vassal /app/bin/vassal
       - mkdir -p /app/lib
-      - tar -xjf tmp/VASSAL-3.6.14-linux.tar.bz2
-      - install -D VASSAL-3.6.14/lib/*.jar /app/lib
+      - tar -xjf tmp/VASSAL-3.6.17-linux.tar.bz2
+      - install -D VASSAL-3.6.17/lib/*.jar /app/lib
       - install -Dm644 org.vassalengine.vassal.desktop /app/share/applications/org.vassalengine.vassal.desktop
       - install -Dm644 org.vassalengine.vassal.metainfo.xml /app/share/metainfo/org.vassalengine.vassal.metainfo.xml
-      - install -Dm644 VASSAL-3.6.14/VASSAL.svg /app/share/icons/hicolor/scalable/apps/org.vassalengine.vassal.svg
+      - install -Dm644 VASSAL-3.6.17/VASSAL.svg /app/share/icons/hicolor/scalable/apps/org.vassalengine.vassal.svg
