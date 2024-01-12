@@ -3,7 +3,7 @@ runtime: org.freedesktop.Platform
 runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 sdk-extensions:
-  - org.freedesktop.Sdk.Extension.openjdk17
+  - org.freedesktop.Sdk.Extension.openjdk
 command: vassal
 finish-args:
   - --share=network
@@ -11,14 +11,14 @@ finish-args:
   - --socket=x11
   - --socket=wayland
   - --socket=pulseaudio
-  - --env=PATH=/app/bin:/app/jdk/bin
-  - --env=JAVA_HOME=/app/jdk
+  - --env=PATH=/app/jre/bin:/app/jdk/bin:/app/bin:/usr/bin
+  - --env=JAVA_HOME=/app/jre
   - --filesystem=home
 modules:
   - name: openjdk
     buildsystem: simple
     build-commands:
-      - /usr/lib/sdk/openjdk17/installjdk.sh
+      - /usr/lib/sdk/openjdk/installjdk.sh
   - name: vassal
     buildsystem: simple
     sources:
@@ -35,13 +35,20 @@ modules:
         tag: "3.7.6"
         url: "https://github.com/vassalengine/vassal.git"
       - type: patch
-        path: patches/skip_doc.patch
+        path: patches/Makefile.patch
+      - type: patch
+        path: patches/vassal-app-pom-xml.patch
+      - type: file
+        dest: .mvn/wrapper
+        dest-filename: maven-wrapper.jar
+        url: https://repo.maven.apache.org/maven2/org/apache/maven/wrapper/maven-wrapper/3.2.0/maven-wrapper-3.2.0.jar
+        sha256: e63a53cfb9c4d291ebe3c2b0edacb7622bbc480326beaa5a0456e412f52f066a
+      - maven-dependencies.yml
     build-options:
-      build-args:
-        - --share=network
       env:
-        PATH: /usr/bin:/app/bin:/app/jdk/bin
-        JAVA_HOME: /app/jdk
+        PATH: /usr/bin:/app/bin:/app/jdk/bin:/usr/lib/sdk/openjdk/bin
+        JAVA_HOME: /usr/lib/sdk/openjdk/jvm/openjdk-21
+        MAVEN_OPTS: -Dmaven.repo.local=.mvn/repository
     build-commands:
       - make release-linux
       - install -D vassal /app/bin/vassal
